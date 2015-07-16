@@ -10,13 +10,13 @@
 */
 
 // helpers
-include 'utils/polyfill.php';
-include 'utils/console.php';
-include 'utils/params.php';
-include 'utils/api.php';
-include 'utils/html.php';
-include 'filter.php';
-include 'search.php';
-include 'cache.php';
-include 'taxonomy-metabox.php';
-include 'taxonomy-metabox/search-n-select.php';
+require_once 'utils/polyfill.php';
+require_once 'utils/console.php';
+require_once 'utils/params.php';
+require_once 'utils/api.php';
+require_once 'utils/html.php';
+require_once 'filter.php';
+require_once 'search.php';
+require_once 'cache.php';
+require_once 'taxonomy-metabox.php';
+require_once 'taxonomy-metabox/search-n-select.php';

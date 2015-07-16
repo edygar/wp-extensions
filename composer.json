@@ -11,8 +11,22 @@
 		"beelab/bowerphp": "1.0.*@dev"
 	},
 	"scripts": {
-		"post-install-cmd": [
+		"post-package-install": [
 			"bowerphp install"
+		]
+	},
+	"autoload": {
+		"files": [
+			"utils/polyfill.php",
+			"utils/console.php",
+			"utils/params.php",
+			"utils/api.php",
+			"utils/html.php",
+			"filter.php",
+			"search.php",
+			"cache.php",
+			"taxonomy-metabox.php",
+			"taxonomy-metabox/search-n-select.php"
 		]
 	}
 }
