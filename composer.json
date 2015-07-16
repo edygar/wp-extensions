@@ -8,7 +8,7 @@
 		}
 	],
 	"require": {
-		"beelab/bowerphp": "0.3.*@beta"
+		"beelab/bowerphp": "1.0.*@dev"
 	},
 	"scripts": {
 		"post-install-cmd": [

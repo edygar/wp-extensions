@@ -4,20 +4,20 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "326bf2c34afa5673e5661b2bd86df01d",
+    "hash": "210d994fcd9c5a6836e0a7e177c3f0eb",
     "packages": [
         {
             "name": "beelab/bowerphp",
-            "version": "v0.3.3-beta",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Bee-Lab/bowerphp.git",
-                "reference": "6ce9f82526f47bbaa4e1ffe21f6ce0e7340f5023"
+                "reference": "6ad9e4b5dd898e8cd06d9f98ad245161c33ec326"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Bee-Lab/bowerphp/zipball/6ce9f82526f47bbaa4e1ffe21f6ce0e7340f5023",
-                "reference": "6ce9f82526f47bbaa4e1ffe21f6ce0e7340f5023",
+                "url": "https://api.github.com/repos/Bee-Lab/bowerphp/zipball/6ad9e4b5dd898e8cd06d9f98ad245161c33ec326",
+                "reference": "6ad9e4b5dd898e8cd06d9f98ad245161c33ec326",
                 "shasum": ""
             },
             "require": {
@@ -77,7 +77,7 @@
                 "frontend",
                 "package"
             ],
-            "time": "2015-05-24 10:24:23"
+            "time": "2015-07-09 11:21:04"
         },
         {
             "name": "camspiers/json-pretty",
@@ -595,7 +595,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "beelab/bowerphp": 10
+        "beelab/bowerphp": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

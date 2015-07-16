@@ -1,8 +1,0 @@
-.bowerrc
-bin
-!bin/bowerphp
-!bin/compile
-bower.json
-bowerphp.phar
-vendor
-box.json
