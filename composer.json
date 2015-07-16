@@ -7,5 +7,12 @@
 			"email": "edygardelima@gmail.com"
 		}
 	],
-	"require": {}
+	"require": {
+		"beelab/bowerphp": "0.3.*@beta"
+	},
+	"scripts": {
+		"post-install-cmd": [
+			"bowerphp install"
+		]
+	}
 }
