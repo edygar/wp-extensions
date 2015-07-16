@@ -1,0 +1,11 @@
+{
+	"name": "edygar/wp-extensions",
+  "type": "wordpress-plugin",
+	"authors": [
+		{
+			"name": "Edygar de Lima Oliveira",
+			"email": "edygardelima@gmail.com"
+		}
+	],
+	"require": {}
+}
