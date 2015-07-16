@@ -8,25 +8,7 @@
 		}
 	],
 	"require": {
-		"beelab/bowerphp": "1.0.*@dev"
-	},
-	"scripts": {
-		"post-package-install": [
-			"bowerphp install"
-		]
-	},
-	"autoload": {
-		"files": [
-			"utils/polyfill.php",
-			"utils/console.php",
-			"utils/params.php",
-			"utils/api.php",
-			"utils/html.php",
-			"filter.php",
-			"search.php",
-			"cache.php",
-			"taxonomy-metabox.php",
-			"taxonomy-metabox/search-n-select.php"
-		]
-	}
+		"fxp/composer-asset-plugin" : "~1.0",
+    "bower-asset/selectize": "~0.12.1"
+  }
 }
