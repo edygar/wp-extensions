@@ -1,9 +1,9 @@
 <?php
-namespace WPX\Search;
+namespace WPExtensions\Search;
 require_once('filter.php');
 
-use function \WPX\Filter\escoped_filters as escoped_filters;
-use function WPX\Utils\value as value;
+use function \WPExtensions\Filter\escoped_filters as escoped_filters;
+use function WPExtensions\Utils\value as value;
 
 function search_terms($taxonomy, Array $options) {
 	$options += [

@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Filter;
+namespace WPExtensions\Filter;
 
 function escoped_filters(Array $filters, callable $escoped) {
 	foreach($filters as $filter => $function)

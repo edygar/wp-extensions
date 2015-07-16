@@ -1,14 +1,14 @@
 <?php
 
-namespace WPX\Taxonomy;
+namespace WPExtensions\Taxonomy;
 
-use function WPX\Utils\is_assoc as is_assoc;
-use function WPX\Utils\value as value;
+use function WPExtensions\Utils\is_assoc as is_assoc;
+use function WPExtensions\Utils\value as value;
 
 class TaxonomyMetabox {
 	const TYPES = [
-		'select' => 'WPX\Utils\select',
-		'input' => 'WPX\Utils\input'
+		'select' => 'WPExtensions\Utils\select',
+		'input' => 'WPExtensions\Utils\input'
 	];
 	
 	static $defaultSettings = [
@@ -18,7 +18,7 @@ class TaxonomyMetabox {
 		'multiple' => false,
 		'required' => false,
 		'preload' => 'all',
-		'renderer' => 'WPX\Utils\input'
+		'renderer' => 'WPExtensions\Utils\input'
 	];
 
 	protected $settings = [];

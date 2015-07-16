@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Utils;
+namespace WPExtensions\Utils;
 
 function console_log() {
 	foreach((array)func_get_args() as $current) {

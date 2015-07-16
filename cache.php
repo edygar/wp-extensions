@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Cache;
+namespace WPExtensions\Cache;
 
 function cached_result($cache_key, $fn) {
 	if (!is_preview() && $result = wp_cache_get($cache_key))

@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Utils;
+namespace WPExtensions\Utils;
 
 function is_assoc($array){
   return (array_values($array) !== $array);

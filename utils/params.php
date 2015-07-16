@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Utils;
+namespace WPExtensions\Utils;
 
 function value(&$array, $key, $defaultsTo = null) {
 	try{

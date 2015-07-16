@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Utils;
+namespace WPExtensions\Utils;
 
 function getPagination(){
 	$defaultPagination = ['offset'=> 0, 'limit'=> 10];

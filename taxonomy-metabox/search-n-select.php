@@ -1,10 +1,10 @@
 <?php
-namespace WPX\TaxonomyMetabox;
+namespace WPExtensions\TaxonomyMetabox;
 
-use function WPX\Utils\value as value;
-use function WPX\Utils\_GET as _GET;
-use function WPX\Utils\_POST as _POST;
-use function WPX\Utils\getPagination as getPagination;
+use function WPExtensions\Utils\value as value;
+use function WPExtensions\Utils\_GET as _GET;
+use function WPExtensions\Utils\_POST as _POST;
+use function WPExtensions\Utils\getPagination as getPagination;
 
 /**
  * Generates a taxonomy metabox function callback together with seletize
@@ -226,7 +226,7 @@ add_action( 'wp_ajax_tsns_search', function() {
 		$terms = wp_get_object_terms($post_id, $taxonomy);
 	else 
 		// When searching through query
-		$terms = \WPX\Search\search_terms($taxonomy,
+		$terms = \WPExtensions\Search\search_terms($taxonomy,
 			apply_filters('tsns_search_params', apply_filters('tsns_search_terms_params', [
 			'search' => $query,
 

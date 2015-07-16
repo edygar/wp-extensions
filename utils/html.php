@@ -1,5 +1,5 @@
 <?php
-namespace WPX\Utils;
+namespace WPExtensions\Utils;
 
 function input($settings) {
   $name = value($settings,'name');	
