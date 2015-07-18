@@ -5,8 +5,6 @@
 	Description: Wordpress Extensions
 	Author: Edygar de Lima Oliveira <edygardelima@gmail.com>
 	Author URI: http://www.github.com/edygar
-	Text Domain: concurso
-	Depends: Advanced Custom Fields
 */
 
 namespace WPExtensions;
