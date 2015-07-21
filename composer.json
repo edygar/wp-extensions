@@ -1,11 +1,11 @@
 {
 	"name": "edygar/wp-extensions",
-  "type": "wordpress-plugin",
+	"type": "wordpress-plugin",
 	"authors": [
-		{
-			"name": "Edygar de Lima Oliveira",
-			"email": "edygardelima@gmail.com"
-		}
+	{
+		"name": "Edygar de Lima Oliveira",
+		"email": "edygardelima@gmail.com"
+	}
 	],
 	"require": {
 		"fxp/composer-asset-plugin" : "~1.0",
