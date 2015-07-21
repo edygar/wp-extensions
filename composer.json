@@ -10,5 +10,11 @@
 	"require": {
 		"fxp/composer-asset-plugin" : "~1.0",
     "bower-asset/selectize": "~0.12.1"
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "./vendor",
+      "bower-asset-library": "./vendor"
+    }
   }
 }
