@@ -2,8 +2,8 @@
 namespace WPExtensions\Search;
 require_once('filter.php');
 
-use function \WPExtensions\Filter\escoped_filters as escoped_filters;
-use function WPExtensions\Utils\value as value;
+use function \WPExtensions\Filter\escoped_filters;
+use function \WPExtensions\Utils\value;
 
 function search_terms($taxonomy, Array $options) {
 	$options += [
@@ -13,6 +13,8 @@ function search_terms($taxonomy, Array $options) {
 		'level' => null
 	];
 
+	$options['cache_domain'] = md5( serialize($options) );
+
 	if ($raw_query = value($options,'search', null)) {
 		$raw_query = trim($raw_query);
 		$query = preg_replace('@\s+@smi','%', trim($raw_query));
@@ -20,6 +22,7 @@ function search_terms($taxonomy, Array $options) {
 	}
 	else
 		$query = null;
+
 
 	if (value($options, 'level', null)===0) {
 		unset($options['level']);
@@ -61,28 +64,32 @@ function search_terms($taxonomy, Array $options) {
 				$clauses = [
 					'fields' => "$clauses[fields], ".$wpdb->prepare(
 							'CASE
+									WHEN t.slug like %s THEN %d
 									WHEN t.name = %s THEN %d
+									WHEN t.slug like %s THEN %d
 									WHEN t.name like %s THEN %d
-									WHEN t.name like %s THEN %d
+									WHEN t.slug like %s THEN %d
 									WHEN t.name like %s THEN %d
 								ELSE
 									0
 								END as score
 							',
 							[
-								$raw_query, 10,
-								$raw_query, 8,
-								"$raw_query%", 6,
-								"$query%", 4,
+								$raw_query, 6,
+								$raw_query, 5,
+								"$raw_query%", 4,
+								"$raw_query%", 3,
+								"$query%", 2,
+								"$query%", 1,
 							]
 						),
 					'where' => $clauses['where'].$wpdb->prepare('
 						 AND (
 								(t.name LIKE %s) OR (t.slug LIKE %s)
 							) ',
-							["%$query%", "%$query%"]
+							["$query%", "%$query%"]
 						),
-					'orderby' => 'ORDER BY score DESC, length(t.name) ASC, t.name ',
+					'orderby' => 'ORDER BY score DESC, tt.count DESC, length(t.name) ASC, t.name ',
 				] + $clauses;
 			}
 
@@ -98,8 +105,8 @@ function terms_eager_loading($terms) {
 	foreach((Array)$terms as $term) {
 		if ($term->parent) {
 			$parent = get_term_by('id', $term->parent, $term->taxonomy);
-			$term->parent	= current(terms_eager_loading([$parent]));
-			$term->parents = $term->parent->parents + 1;
+			$term->parent_term	= current(terms_eager_loading([$parent]));
+			$term->parents = $term->parent_term->parents + 1;
 		}
 		else
 			$term->parents = 0;

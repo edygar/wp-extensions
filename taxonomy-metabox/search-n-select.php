@@ -1,10 +1,11 @@
 <?php
 namespace WPExtensions\TaxonomyMetabox;
 
-use function WPExtensions\Utils\value as value;
-use function WPExtensions\Utils\_GET as _GET;
-use function WPExtensions\Utils\_POST as _POST;
-use function WPExtensions\Utils\getPagination as getPagination;
+use function WPExtensions\Utils\value;
+use function WPExtensions\Utils\_GET;
+use function WPExtensions\Utils\_POST;
+use function WPExtensions\Utils\getPagination;
+use function WPExtensions\Search\search_terms;
 
 /**
  * Generates a taxonomy metabox function callback together with seletize
@@ -55,8 +56,13 @@ function searchNSelectField($settings = []) {
     $new_label = $labels->add_new_item;
     $preload = []; 
 
-    if ($preload_length = value($settings,'preload', 10)) 
-    	$preload = get_terms($tax_name, ['number' => $preload_length]);
+    if ($preload_length = value($settings,'preload', 10)) {
+    	$preload = get_terms($tax_name, [
+    		'number' => $preload_length,
+    		'hide_empty'=> false,
+    		'orderby' => 'count'
+    	]);
+    }
     
 
     /**
@@ -70,13 +76,14 @@ function searchNSelectField($settings = []) {
      * @param array 	$settings	Options this current fields
      */
     $config = apply_filters('tsns_selector_setup', $settings['selector_setup']+[
+    	'loadThrottle' => 100,
 	    'valueField' => 'term_id',
 	    'labelField' => 'name',
 	    'searchField' => 'name',
 	    'maxOptions' => 10,
 	   	'optionsTemplate' => '<div class="option"><%- option.name %></div>',
-	   	'createTemplate' => "<div class='option'>$new_label: <%- input %></div>",
-	   	'itemsTemplate' => null,
+	   	'createTemplate' => "<div class='create'>$new_label: <%- input %></div>",
+	   	'itemsTemplate' => '<div class="item"><%- item.name %></div>',
 	   	'maxItems' => $settings['terms_limit'],
     	'delimiter'=> $comma,
     	'options' => $terms + $preload,
@@ -172,6 +179,13 @@ function searchNSelectField($settings = []) {
 					var itemsTemplate = (options.itemsTemplate && _.template(options.itemsTemplate)) || null;
 					var createTemplate = (options.createTemplate && _.template(options.createTemplate)) || null;
 
+					options.create = options.create && function(input) {
+						return {
+							term_id: input,
+							name: input
+						}
+					};
+
 					// Methods
 					options = $.extend({
 
@@ -203,6 +217,7 @@ function searchNSelectField($settings = []) {
 					}, options);
 
 					$el.selectize(options);
+
 				})(jQuery, _);
 			</script>
 		</div>
