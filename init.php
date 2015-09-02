@@ -14,6 +14,7 @@ require_once 'utils/polyfill.php';
 require_once 'utils/console.php';
 require_once 'utils/params.php';
 require_once 'utils/api.php';
+require_once 'utils/capture.php';
 require_once 'utils/html.php';
 require_once 'filter.php';
 require_once 'search.php';
