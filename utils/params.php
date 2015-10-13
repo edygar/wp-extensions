@@ -1,11 +1,18 @@
 <?php
 namespace WPExtensions\Utils;
 
-function value(&$array, $key, $defaultsTo = null) {
+function value(&$source, $key, $defaultsTo = null) {
 	try{
-		return !isset($array[$key])? $defaultsTo: $array[$key];
+		if (is_object($source) && property_exists($source, $key))
+			return $source->{$key};
+
+		else if (is_array($source) && isset($source[$key])) 
+			return $source[$key];
+
+		return $defaultsTo;
+
 	} catch (Exception $e) {
-		var_dump($e);
+		// Shhh!
 	}
 }
 
