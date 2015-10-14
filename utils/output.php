@@ -1,10 +1,10 @@
 <?php
 namespace WPExtensions\Utils;
 
-function capture_output(callable $fn) {
+function capture_output($fn) {
 	ob_start();
 	call_user_func($fn);
-	$result = ob_get_contents();
+	$output = ob_get_contents();
 	ob_end_clean();
-	return $result;
+	return $output;
 }
