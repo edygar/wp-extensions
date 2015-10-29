@@ -26,20 +26,12 @@ require_once 'actions.php';
 
 // defines styling
 add_action('admin_enqueue_scripts', function() {
-	wp_enqueue_script( 'sifter',
-		plugins_url( 'wp-extensions/vendor/sifter/sifter.min.js' ),
-		[], '0.4.x', false );
-
-	wp_enqueue_script( 'microplugin',
-		plugins_url( 'wp-extensions/vendor/microplugin/src/microplugin.js' ),
-		[], '0.0.x', false );
-
 	wp_enqueue_script( 'selectize-tsn',
-		plugins_url( 'wp-extensions/vendor/selectize/dist/js/selectize.min.js' ),
-		['jquery', 'underscore', 'microplugin', 'sifter'], '0.1.0', false );
+		'https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/js/standalone/selectize.min.js',
+		['jquery', 'underscore'], '1.12.1', false );
 
 	wp_enqueue_style( 'selectize-tsn',
-		plugins_url( 'wp-extensions/vendor/selectize/dist/css/selectize.bootstrap2.css'));
+		 'https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.1/css/selectize.bootstrap2.min.css');
 });
 
 // defines the loading indicator style using WP's one
