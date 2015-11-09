@@ -17,6 +17,12 @@ function value(&$source, $keys, $defaultsTo = null) {
 	}
 }
 
+function thruthy_value(&$source, $keys, $defaultsTo = null) {
+  $value = value($source, $keys, $defaultsTo);
+  return $value? $value: $defaultsTo;
+}
+
+
 function _GET($key, $defaultsTo=null) {
 	return value($_GET, $key, $defaultsTo);
 }

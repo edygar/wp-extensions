@@ -18,6 +18,7 @@ require_once 'utils/capture.php';
 require_once 'utils/html.php';
 require_once 'filter.php';
 require_once 'search.php';
+require_once 'query.php';
 require_once 'cache.php';
 require_once 'taxonomy-metabox.php';
 require_once 'taxonomy-metabox/search-n-select.php';
