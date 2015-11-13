@@ -13,6 +13,7 @@ function loop_query($query, $iterador, $none_cb = null)
 			$break = call_user_func_array($iterador, [$query, get_post()]);
 			if ($break === false) break;
 		}
+    $query->rewind_posts();
 		wp_reset_query();
 	}
 	elseif ($none_cb) {
@@ -26,7 +27,7 @@ function loop_query($query, $iterador, $none_cb = null)
 function get_query_IDs($query) {
   $ids = [];
 
-  loop_query(function() {
+  loop_query($query, function() {
     $ids[] = get_the_ID();
   });
 
