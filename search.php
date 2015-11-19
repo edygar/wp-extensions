@@ -44,8 +44,8 @@ function search_terms($taxonomy, Array $options) {
 
 				for($i=1; $i  < $options['level']; $i++) {
 					$clauses["join"] .= "$join $wpdb->term_taxonomy AS ttl$i ON ttl$i.taxonomy = '$taxonomy' and ttl$i.term_taxonomy_id = ttl".($i-1).".parent ";
-					
-					if ($level_and_above) 
+
+					if ($level_and_above)
 						$roots[] = "ttl$i.parent";
 				}
 
@@ -98,7 +98,7 @@ function search_terms($taxonomy, Array $options) {
 	],
 	function() use ($options, $taxonomy) {
 		return get_terms($taxonomy, $options);
-	});	
+	});
 }
 
 function terms_eager_loading($terms) {

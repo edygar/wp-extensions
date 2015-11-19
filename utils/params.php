@@ -4,14 +4,19 @@ namespace WPExtensions\Utils;
 function value(&$source, $keys, $defaultsTo = null) {
 	try{
     if (!is_array($keys)) $keys = [$keys];
-    foreach($keys as $key) {
-      if (is_object($source) && property_exists($source, $key))
-        return $source->{$key};
 
-      else if (is_array($source) && isset($source[$key]))
-        return $source[$key];
+    $value = $source;
+    foreach($keys as $key) {
+      if (is_object($value) && property_exists($value, $key))
+        $value =  $value->{$key};
+
+      else if (is_array($value) && isset($value[$key]))
+        $value = $value[$key];
+
+      else
+        return $defaultsTo;
     }
-    return $defaultsTo;
+    return $value;
 	} catch (Exception $e) {
 		// Shhh!
 	}
