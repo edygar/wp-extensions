@@ -1,7 +1,7 @@
 <?php
 namespace WPExtensions\Utils;
 
-function value(&$source, $keys, $defaultsTo = null) {
+function value($source, $keys, $defaultsTo = null) {
 	try{
     if (!is_array($keys)) $keys = [$keys];
 
