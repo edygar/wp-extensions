@@ -2,8 +2,24 @@
 namespace WPExtensions\Search;
 require_once('filter.php');
 
-use function \WPExtensions\Filter\escoped_filters;
 use function \WPExtensions\Utils\value;
+use function \WPExtensions\Query\get_query_IDs;
+use function \WPExtensions\Filter\escoped_filters;
+
+function not_in_the_main_query($scoped) {
+  global $wp_the_query;
+  $posts_in_main = get_query_IDs($wp_the_query);
+
+	return escoped_filters([
+    'pre_get_posts' => function($query) {
+       $query->set('posts__not_in', $query->get('posts__not_in') + $posts_in_main);
+    },
+	],
+	function() use ($scoped) {
+		return call_user_func($scoped);
+	});
+
+}
 
 function search_terms($taxonomy, Array $options) {
 	$options += [

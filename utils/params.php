@@ -35,3 +35,4 @@ function _GET($key, $defaultsTo=null) {
 function _POST($key, $defaultsTo=null) {
 	return value($_POST, $key, $defaultsTo);
 }
+

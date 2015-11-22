@@ -35,7 +35,7 @@ function loop_query($query, $iterator = null, $none_cb = null)
 function get_query_IDs($query) {
   $ids = [];
 
-  loop_query($query, function() {
+  loop_query($query, function() use (&$ids) {
     $ids[] = get_the_ID();
   });
 
