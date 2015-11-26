@@ -118,7 +118,10 @@ function search_terms($taxonomy, Array $options) {
 }
 
 function terms_eager_loading($terms) {
-	foreach((Array)$terms as $term) {
+  if (!is_array($terms))
+    $terms = [$terms];
+
+	foreach($terms as $term) {
 		if ($term->parent) {
 			$parent = get_term_by('id', $term->parent, $term->taxonomy);
 			$term->parent_term	= current(terms_eager_loading([$parent]));
