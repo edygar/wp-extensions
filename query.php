@@ -32,7 +32,13 @@ function loop_query($query, $iterator = null, $none_cb = null)
 /**
  * Returns all query results ids
  */
-function get_query_IDs($query) {
+function get_query_IDs($query = null) {
+  global $wp_query;
+
+  if ($query === null) {
+    $query = $wp_query;
+  }
+
   $ids = [];
 
   loop_query($query, function() use (&$ids) {
