@@ -15,10 +15,10 @@ use function WPExtensions\Search\search_terms;
  * @global wpdb 	$wpdb							WordPress database abstraction object.
  *
  * @param array $settings {
- * 		Settings to describe how the TSNS fields should work 
+ * 		Settings to describe how the TSNS fields should work
  *
  *		@type string		$ajax_url					url ajax target. Defaults to `ajaxurl`
- *		@type array 		$selector_setup		Selectize Setup 
+ *		@type array 		$selector_setup		Selectize Setup
  *		@type array 		$ajax_data				Aditional data to be served by ajax.
  *																		 	By default, wp_ajax settings are assumed.
  *		@type string		$ajax_query_field	field in ajax data for the query, which
@@ -26,7 +26,7 @@ use function WPExtensions\Search\search_terms;
  *
  *		@type	int|bool	$terms_limit		defines how much terms can be assigned to
  *																		the post. Define *false* for no limit.
- *																	
+ *
  * } *
  * @return function Returns a function which should be passed to 'meta_box_cb'
  * 									of {@link register_taxonomy()}'s $args
@@ -54,7 +54,7 @@ function searchNSelectField($settings = []) {
 
     $labels = get_taxonomy_labels($taxonomy);
     $new_label = $labels->add_new_item;
-    $preload = []; 
+    $preload = [];
 
     if ($preload_length = value($settings,'preload', 10)) {
     	$preload = get_terms($tax_name, [
@@ -63,7 +63,7 @@ function searchNSelectField($settings = []) {
     		'orderby' => 'count'
     	]);
     }
-    
+
 
     /**
      * Filters the selectize settings before its conversion to JSON
@@ -108,7 +108,7 @@ function searchNSelectField($settings = []) {
     );
 
     /**
-     * Filter ajax data to be sent along with the query 
+     * Filter ajax data to be sent along with the query
      *
      * @since 0.1.0
      *
@@ -162,6 +162,13 @@ function searchNSelectField($settings = []) {
 						if (!$el.val())  {
 							e.preventDefault();
 							e.stopPropagation();
+
+              alert(<?php
+                if (value($settings, 'required') === true)
+                  echo 'Required field is empty';
+                else
+                  echo json_encode(value($settings, 'required'))
+              ?>);
 							return false;
 						}
 					});
@@ -189,7 +196,7 @@ function searchNSelectField($settings = []) {
 					// Methods
 					options = $.extend({
 
-						load: function(query, done) { 
+						load: function(query, done) {
 							ajaxData['query'] = query;
 
 							$.ajax({
